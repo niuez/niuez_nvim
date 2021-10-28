@@ -1,0 +1,23 @@
+{
+  "rust-analyzer.inlayHints.typeHints": false,
+  "git.enableGutters": false,
+  "languageserver": {
+    "ccls": {
+      "command": "docker",
+      "args": ["exec", "-i", "cclsdocker", "ccls"],
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "clang": {
+          "extraArgs": [
+            "-std=c++17"
+          ]
+        }
+      }
+    }
+  },
+  "explorer.file.showHiddenFiles": true
+}
