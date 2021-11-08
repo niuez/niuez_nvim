@@ -1,37 +1,25 @@
-FROM alpine:latest
+FROM debian:bullseye-slim
 
 # マルチバイト文字をまともに扱うための設定
 ENV LANG="en_US.UTF-8" LANGUAGE="en_US:ja" LC_ALL="en_US.UTF-8"
 
-# 最低限必要なパッケージ
-RUN apk update && \
-    apk upgrade && \
-    apk add --no-cache \
-    build-base \
-    curl \
+RUN apt update && \
+    apt install -y --no-install-recommends \
     git \
-    libxml2-dev \
-    libxslt-dev \
-    musl-dev\
     neovim \
     nodejs \
     npm \
-    python3-dev \
-    py3-pip \
+    ca-certificates \
     && \
+    apt clean && \
     rm -rf /var/cache/apk/*
 
-RUN pip3 install --upgrade pip neovim
+RUN git clone --depth=1 https://github.com/niuez/lyla.vim /root/.vim/lyla.vim
+RUN git clone --depth=1 -b release --single-branch https://github.com/neoclide/coc.nvim /root/.vim/coc.nvim
 
-# install dein.vim
-RUN curl -sf https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh \
-    | sh -s /root/.vim/dein
+COPY nvim/init.vim /root/.config/nvim/init.vim
+COPY nvim/coc-settings.json /root/.config/nvim/coc-settings.json
 
-COPY nvim /root/.config/nvim
-
-RUN nvim +:UpdateRemotePlugins +qa
-RUN nvim -c "call dein#install()" +qa
-RUN nvim -c "CocInstall -sync coc-explorer" +qa
 RUN chmod -R 777 /root
 
 WORKDIR /content

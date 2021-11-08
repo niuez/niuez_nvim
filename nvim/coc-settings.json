@@ -3,8 +3,7 @@
   "git.enableGutters": false,
   "languageserver": {
     "ccls": {
-      "command": "docker",
-      "args": ["exec", "-i", "cclsdocker", "ccls"],
+      "command": "ccls",
       "filetypes": ["c", "cpp", "objc", "objcpp"],
       "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "initializationOptions": {

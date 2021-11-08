@@ -9,36 +9,8 @@ endif
 
 let g:lyla_bg_is_none = v:false
 
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-
-let s:toml_dir=expand('~/.config/nvim')
-
-if dein#load_state(expand('~/.vim/dein/'))
-  call dein#begin(expand('~/.vim/dein'))
-
-  let s:toml = s:toml_dir . '/dein.toml'
-  "let s:lazy = s:toml_dir . '/dein_lazy.toml'
-
-  "colorscheme
-  call dein#add('niuez/lyla.vim')
-  call dein#add('pearofducks/ansible-vim')
-  call dein#add('octol/vim-cpp-enhanced-highlight')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
-  call dein#add('qnighy/satysfi.vim')
-  call dein#add('folke/tokyonight.nvim')
-  call dein#add('https://github.com/atelierbram/Base2Tone-vim')
-  call dein#add('https://github.com/arcticicestudio/nord-vim')
-  call dein#add('https://github.com/ajmwagar/vim-deus')
-  "call dein#add('liuchengxu/vista.vim')
-
-
-  call dein#load_toml(s:toml,{'lazy':0})
-  "call dein#load_toml(s:lazy,{'lazy':1})
-
-  call dein#end()
-  call dein#save_state()
-endif
+set runtimepath+=/root/.vim/lyla.vim
+set runtimepath+=/root/.vim/coc.nvim
 
 filetype plugin indent on
 
@@ -113,18 +85,6 @@ smap <C-k> <Plug>(coc-snippets-expand)
 xmap <C-k> <Plug>(coc-snippets-expand)
 nnoremap [q :cprevious<CR>
 nnoremap ]q :cnext<CR>
-
-"syntax match nimFunction /\w\+\s*(/me=e-1,he=e-1 
-"
-set printheader=%t%=%N
-set printfont="Source\ Code\ Pro"
-set printoptions=syntax:n
-language en_US.UTF-8 
-
-let g:airline_right_sep=' '
-let g:airline_right_alt_sep=' '
-let g:airline_left_sep=' '
-let g:airline_left_alt_sep=' '
 
 let s:fg = "#6F8EB3"
 "let s:fg = "#a4a4a4"
