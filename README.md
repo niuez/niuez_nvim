@@ -13,6 +13,7 @@ MEMO: image size 148MB with debian:bullseye
 Example using nvim\_builder for neovim on gcc11.2.0 docker image with
 - [ccls](https://github.com/MaskRay/ccls)(C++ language server)
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- [lsp\_signature.nvim](https://github.com/ray-x/lsp_signature.nvim)
 - [vim-cpp-enhanced-highlight](https://github.com/octol/vim-cpp-enhanced-highlight)
 - [lyla.vim](https://github.com/niuez/lyla.vim)(my colorscheme)
 - my neovim config files(in `ccls_example/nvim`)

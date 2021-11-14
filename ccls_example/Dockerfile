@@ -20,6 +20,7 @@ RUN git clone --depth=1 https://github.com/octol/vim-cpp-enhanced-highlight.git 
   && mkdir -p ~/.config/nvim/after/syntax/ \
   && mv /tmp/vim-cpp-enhanced-highlight/after/syntax/cpp.vim ~/.config/nvim/after/syntax/cpp.vim \
   && rm -rf /tmp/vim-cpp-enhanced-highlight
+RUN git clone --depth=1 https://github.com/ray-x/lsp_signature.nvim /root/.vim/lsp_signature.nvim
 COPY nvim /root/.config/nvim
 
 RUN chmod -R 777 /root
