@@ -12,6 +12,7 @@ let g:lyla_bg_is_none = v:false
 set runtimepath+=/root/.vim/lyla.vim
 set runtimepath+=/root/.vim/nvim-lspconfig
 set runtimepath+=/root/.vim/lsp_signature.nvim
+set runtimepath+=/root/.vim/nvim-treesitter
 
 filetype plugin indent on
 

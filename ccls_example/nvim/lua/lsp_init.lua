@@ -31,5 +31,9 @@ require('lspconfig').ccls.setup({
   on_attach = on_attach
 })
 
-
+require('nvim-treesitter.configs').setup {
+  highlight = {
+    enable = true
+  }
+}
 

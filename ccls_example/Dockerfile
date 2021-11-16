@@ -13,15 +13,12 @@ COPY --from=nvim_builder /nvim /nvim
 ENV PATH=$PATH:/nvim/bin
 
 # setting for neovim
+COPY nvim /root/.config/nvim
 RUN git clone --depth=1 https://github.com/niuez/lyla.vim /root/.vim/lyla.vim
 RUN git clone --depth=1 https://github.com/neovim/nvim-lspconfig /root/.vim/nvim-lspconfig
 RUN git clone --depth=1 https://github.com/octol/vim-cpp-enhanced-highlight /root/.vim/vim-cpp-enhanced-highlight
-RUN git clone --depth=1 https://github.com/octol/vim-cpp-enhanced-highlight.git /tmp/vim-cpp-enhanced-highlight \
-  && mkdir -p ~/.config/nvim/after/syntax/ \
-  && mv /tmp/vim-cpp-enhanced-highlight/after/syntax/cpp.vim ~/.config/nvim/after/syntax/cpp.vim \
-  && rm -rf /tmp/vim-cpp-enhanced-highlight
 RUN git clone --depth=1 https://github.com/ray-x/lsp_signature.nvim /root/.vim/lsp_signature.nvim
-COPY nvim /root/.config/nvim
+RUN git clone --depth=1 https://github.com/nvim-treesitter/nvim-treesitter /root/.vim/nvim-treesitter && nvim -c ":TSUpdateSync" -c ":TSInstallSync cpp" -c ":q"
 
 RUN chmod -R 777 /root
 
