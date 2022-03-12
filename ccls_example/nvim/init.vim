@@ -13,6 +13,7 @@ set runtimepath+=/root/.vim/lyla.vim
 set runtimepath+=/root/.vim/nvim-lspconfig
 set runtimepath+=/root/.vim/lsp_signature.nvim
 set runtimepath+=/root/.vim/nvim-treesitter
+set runtimepath+=/root/.vim/LuaSnip
 
 filetype plugin indent on
 
@@ -82,9 +83,9 @@ nmap <C-Space> zz
 tmap <C-q> <C-\><C-n>
 nmap ge :CocCommand explorer<CR>
 nmap gb :CocCommand explorer --sources buffer+,file-<CR>
-imap <C-k> <Plug>(coc-snippets-expand)
-smap <C-k> <Plug>(coc-snippets-expand)
-xmap <C-k> <Plug>(coc-snippets-expand)
+"imap <C-k> <Plug>(coc-snippets-expand)
+"smap <C-k> <Plug>(coc-snippets-expand)
+"xmap <C-k> <Plug>(coc-snippets-expand)
 nnoremap [q :cprevious<CR>
 nnoremap ]q :cnext<CR>
 
@@ -201,3 +202,16 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ "\<C-x>\<C-o>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" press <Tab> to expand or jump in a snippet. These can also be mapped separately
+" via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
+imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
+" -1 for jumping backwards.
+"inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
+"snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+"snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+
+" For changing choices in choiceNodes (not strictly necessary for a basic setup).
+"imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
+"smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
