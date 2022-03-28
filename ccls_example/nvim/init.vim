@@ -7,7 +7,7 @@ if exists('&ambw')
   set ambiwidth=double
 endif
 
-let g:lyla_bg_is_none = v:false
+let g:lyla_bg_is_none = v:true
 
 set runtimepath+=/root/.vim/lyla.vim
 set runtimepath+=/root/.vim/nvim-lspconfig
@@ -100,7 +100,8 @@ let s:blue = "#e9a05a"
 let s:grey = "#6A6868"
 let s:white = "#999999"
 let s:none = "NONE"
-let s:bg = "#242828"
+"let s:bg = "#242828"
+let s:bg = "None"
 
 function! s:h(group, fg, bg, attr)
   if a:attr != ""
